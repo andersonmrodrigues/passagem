@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passagem de Plantão com Bootstrap 5</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Passagem de Plantão</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="item.html">Itens</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="form.html">Avaliações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Atendimentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-primary" href="login.html">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <div class="container mt-5">
+    <div class="container mt-5">
+      <h1>Cadastro de Itens de Avaliação</h1>
+      
+      <!-- Botão para adicionar novo item -->
+      <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#itemModal">Adicionar Novo Item</button>
+      
+      <!-- Tabela de Itens -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome do Item</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Dieta</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Acessos venosos</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>PAM</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Diurese</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Curativos</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Exames</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="itemModalLabel">Adicionar Item</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="itemForm">
+              <div class="mb-3">
+                <label for="itemName" class="form-label">Nome do Item</label>
+                <input type="text" class="form-control" id="itemName" required value="Curativos">
+              </div>
+              <div class="mb-3">
+                <label for="itemType" class="form-label">Forma de Preenchimento</label>
+                <select class="form-control" id="itemType" required>
+                  <option value="campo aberto">Campo Aberto</option>
+                  <option value="lista de opções">Lista de Opções</option>
+                  <option value="verdadeiro ou falso" selected>Verdadeiro ou Falso</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Planos de Cuidado</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Plano de Cuidado</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="carePlansTableBody">
+                    <tr>
+                      <td>Limpar a ferida com solução salina estéril a cada troca de curativo.</td>
+                      <td><button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Remover</button></td>
+                    </tr>
+                    <tr>
+                      <td>Aplicar curativo estéril tipo gaze com cobertura impermeável.</td>
+                      <td><button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Remover</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="button" class="btn btn-secondary" id="addCarePlan">Adicionar Plano de Cuidado</button>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Prescrições</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Prescrição</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="prescriptionsTableBody">
+                    <tr>
+                      <td>Paracetamol 500 mg: 1 comprimido a cada 6 horas, se necessário, para controle da dor.</td>
+                      <td><button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Remover</button></td>
+                    </tr>
+                    <tr>
+                      <td>Dipirona 1 g: 1 ampola a cada 6 horas, se necessário, para controle da febre.</td>
+                      <td><button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Remover</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="button" class="btn btn-secondary" id="addPrescription">Adicionar Prescrição</button>
+              </div>
+              <input type="hidden" id="itemId">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center text-lg-start mt-5">
+
+    <div class="text-center p-3 bg-light">
+      © 2024 Passagem de Plantão:
+      <a class="text-dark" href="https://meusite.com/">meusite.com</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
